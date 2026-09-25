@@ -4,6 +4,7 @@ truststore.inject_into_ssl()
 from google import genai
 from dotenv import load_dotenv
 import time
+load_dotenv()
 
 client = genai.Client()
 st.title("🌍 WithTraveller ")
