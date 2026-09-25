@@ -50,7 +50,31 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
+st.markdown("""
+<style>
 
+.stApp {
+    background-image: url("https://images.unsplash.com/photo-1469474968028-56623f02e42e");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Add a light transparent layer */
+.stApp::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.78);
+    z-index: 0;
+    pointer-events: none;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 
 
