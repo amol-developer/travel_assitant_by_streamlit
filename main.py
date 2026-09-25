@@ -1,0 +1,60 @@
+import streamlit as st
+import truststore
+truststore.inject_into_ssl()
+from google import genai
+from dotenv import load_dotenv
+import time
+
+client = genai.Client()
+st.title("🌍 WithTraveller ")
+st.subheader("Your smart companion for every journey 🧳")
+st.caption("Your trip, your style, your budget")
+location=st.text_input("where you want to go ")
+days=st.number_input("how many days to want to go for trip ",min_value=1,max_value=50)
+trip_type=st.selectbox("Who are you traveling with ",["Family","solo","Friends","Partner"],placeholder="select")
+trip_budgeat=st.radio("What is your budget for this trip",["Luxury","Moderate","Budget-friendly"])
+
+with st.popover("ℹ️", ):
+    st.markdown("### Budget Types")
+
+    st.markdown("""
+    **💰 Budget-Friendly**  
+    Focuses on affordable hotels, public transport, and low-cost activities.
+
+    **💳 Moderate**  
+    A balance between comfort and cost, with mid-range hotels, transportation,
+    and activities.
+
+    **✨ Luxury**  
+    Focuses on premium hotels, private transportation, fine dining,
+    and high-end experiences.
+    """)
+trip_mode=st.selectbox("How will you travel on this trip",
+                      ["Flight", "Train", "Bus / Travels", "Car", "Bike", "Not sure yet", "suggest the best for me"],
+                      index=None,
+                      placeholder="Choose a travel mode...")
+
+
+
+if trip_mode is None:
+        st.warning("⚠️ Please select at least one travel mode before continuing.")
+        st.stop()
+language=st.selectbox("which language do you preper ",["English","hindi","Marathi","spanish","France"])    
+prompt=f"""you are an intelligent and planner .
+            user wants to he/she wants to go to {location} and go for {days} days .
+            user trip type : {trip_type},user budget status for trip : {trip_budgeat},
+            user travel way/type : {trip_mode},answer in language : {language},
+            plan a trip and share answer is bullet formate"""
+if st.button("Plan trip 🧗"):
+    interaction = client.interactions.create(
+        model="gemini-3.5-flash-lite",
+        input=prompt)
+    with st.spinner("wait for it...",show_time=True):
+        time.sleep(5)
+    st.write("your trip location is ",location)
+    st.write("you plan trip for ",days," days")
+    
+    st.success("ALL THE BEST for your journey ✈️ here are some fab suggestion !!")
+    
+    st.write(interaction.output_text)
+    st.image("imagestravel.jpg",caption="Explore your nest destination")
