@@ -1,0 +1,9 @@
+openpyxl
+rich
+pyfiglet
+emoji
+pwinput
+streamlit
+google-genai
+python-dotenv
+truststore
