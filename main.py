@@ -7,6 +7,11 @@ import time
 load_dotenv()
 
 client = genai.Client()
+st.set_page_config(
+    page_title="developer_Amol",
+    page_icon="✈️",
+    layout="wide"
+)
 st.title("🌍 WithTraveller ")
 st.subheader("Your smart companion for every journey 🧳")
 st.caption("Your trip, your style, your budget")
