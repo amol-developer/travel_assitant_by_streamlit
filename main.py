@@ -12,9 +12,48 @@ st.set_page_config(
     page_icon="✈️",
     layout="wide"
 )
-st.title("🌍 WithTraveller ")
-st.subheader("Your smart companion for every journey 🧳")
-st.caption("Your trip, your style, your budget")
+
+st.markdown("""
+<style>
+.title-box {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 25px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+}
+
+.title-box h1 {
+    color: black;
+    font-size: 42px;
+    margin: 0;
+}
+
+.title-box p {
+    color: black;
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+.title-box h6 {
+    color: green;
+    font-size: 18px;
+    margin-top: 8px;
+</style>
+
+<div class="title-box">
+    <h1>🌍 WithTraveller</h1>
+    <p>🚗 Your smart companion for planning amazing journeys</p>
+    <h6>Your trip, your style, your budget 🌤️</h6>
+</div>
+""", unsafe_allow_html=True)
+
+
+
+
+
+
 location=st.text_input("where you want to go ")
 days=st.number_input("how many days to want to go for trip ",min_value=1,max_value=50)
 trip_type=st.selectbox("Who are you traveling with ",["Family","solo","Friends","Partner"],placeholder="select")
