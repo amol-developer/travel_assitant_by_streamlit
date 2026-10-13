@@ -60,7 +60,7 @@ st.markdown("""
     background-attachment: fixed;
 }
 
-/* Add a light transparent layer */
+/* Add a medium transparent layer */
 .stApp::before {
     content: "";
     position: fixed;
